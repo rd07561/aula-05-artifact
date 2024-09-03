@@ -7,7 +7,7 @@ jobs:
       - name: Running hello
         uses: actions/checkout@v1
       - name: instalar http
-        run: apt-get install http
+        run: sudo apt-get install http
       - run: echo Hello World
       - name: Running Linux version
         run: |
