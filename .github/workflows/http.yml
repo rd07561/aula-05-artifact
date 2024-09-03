@@ -6,8 +6,8 @@ jobs:
     steps:
       - name: Running hello
         uses: actions/checkout@v1
-      - name: instalar http
-        run: sudo apt-get install http
+      - name: instalar httpd
+        run: sudo apt-get install httpd
       - run: echo Hello World
       - name: Running Linux version
         run: |
