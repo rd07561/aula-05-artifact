@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Running hello
         uses: actions/checkout@v1
+      - name: instalar http
+        run: yum install http
       - run: echo Hello World
       - name: Running Linux version
         run: |
