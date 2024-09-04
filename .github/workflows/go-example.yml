@@ -1,3 +1,10 @@
+- name: Push a cada 15 minutos
+  on:
+    push:
+      branches: [ main ]
+    pull_request:
+      branches: [ main ]
+
 - name: Upload artifact for linux
     uses: actions/upload-artifact@v1.0.0
     with:
