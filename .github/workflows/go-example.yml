@@ -8,6 +8,20 @@
     schedule:
       - cron: */15 * * * 1-6 echo "schedule push file" >/dev/null 2>&1
 
+- name: Build ubuntu image
+  jobs:
+    ubuntu-image-job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout ubuntu image
+          uses: actions/checkout@v1
+        - name: instalar apache2
+          run: sudo apt-get install apache2
+        - name: Running Linux version
+          run: |
+            echo Running on Linux
+            uname -a
+
 - name: Upload artifact for linux
     uses: actions/upload-artifact@v1.0.0
     with:
