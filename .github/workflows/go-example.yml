@@ -8,6 +8,9 @@
     schedule:
       - cron: "*/15 * * * 1-6"
 
+  env:
+    FILE_NAME: hello-server
+
 - name: Build ubuntu image latest
   jobs:
     ubuntu-image-job:
