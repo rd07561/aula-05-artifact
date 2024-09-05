@@ -6,7 +6,7 @@
       branches: [ main ]
 
     schedule:
-      - cron: */15 * * * 1-6 echo "schedule push file" >/dev/null 2>&1
+      - cron: */15 * * * 1-6
 
 - name: Build ubuntu image latest
   jobs:
