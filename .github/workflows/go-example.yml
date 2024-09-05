@@ -1,46 +1,45 @@
-- name: Push a cada 15 minutos
-  on:
-    push:
-      branches: [ main ]
-    pull_request:
-      branches: [ main ]
+name: Push a cada 15 minutos
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-    schedule:
-      - cron: "*/15 * * * 1-6"
+  schedule:
+    - cron: "*/15 * * * 1-6"
 
-  env:
-    FILE_NAME: hello-server
+env:
+  FILE_NAME: hello-server
 
-- name: Build ubuntu image latest
-  jobs:
-    ubuntu-image-job:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout ubuntu image
-          uses: actions/checkout@v1.0.0
-        - name: instalar apache2
-          run: sudo apt-get install apache2
-        - name: Running Linux version
-          run: |
-            echo Running on Linux
-            uname -a
+name: Build ubuntu image latest
+jobs:
+  ubuntu-image-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout ubuntu image
+        uses: actions/checkout@v1.0.0
+      - name: instalar apache2
+        run: sudo apt-get install apache2
+      - name: Running Linux version
+        run: |
+          echo Running on Linux
+          uname -a
  
-    job-linux:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Upload artifact for linux
-          uses: actions/upload-artifact@v1.0.0
-          with:
-            name: linux
-            path: ./${{ env.FILE_NAME }}
+  job-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload artifact for linux
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: linux
+          path: ./${{ env.FILE_NAME }}
          
          
-#    job-windows:
-#      runs-on: windows-latest
-#      steps:
-#        - name: Upload artifact for windows
-#          uses: actions/upload-artifact@v1.0.0
-#          with:
-#            name: windows
-#            path: ./${{ env.FILE_NAME }}.exe
-#
+  job-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Upload artifact for windows
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: windows
+          path: ./${{ env.FILE_NAME }}.exe
