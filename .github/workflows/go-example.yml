@@ -24,18 +24,22 @@
           run: |
             echo Running on Linux
             uname -a
+ 
+    job-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload artifact for linux
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: linux
+          path: ./${{ env.FILE_NAME }}
 
-- name: Upload artifact for linux
-  runs-on: ubuntu-latest
-  steps:
-    uses: actions/upload-artifact@v1.0.0
-    with:
-      name: linux
-      path: ./${{ env.FILE_NAME }}
-- name: Upload artifact for windows
-  runs-on: windows-latest
-  steps:
-    uses: actions/upload-artifact@v1.0.0
-    with:
-      name: windows
-      path: ./${{ env.FILE_NAME }}.exe
+
+    job-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Upload artifact for windows
+       uses: actions/upload-artifact@v1.0.0
+       with:
+         name: windows
+         path: ./${{ env.FILE_NAME }}.exe
