@@ -29,6 +29,9 @@ jobs:
           name: linux
           path: ./${{ env.FILE_NAME }}
 
+      - name: Install Apache2 on linux image
+        run: sudo apt-get install apache2
+
       - name: Upload artifact for Windows image
         uses: actions/upload-artifact@v1.0.0
         with:
@@ -46,9 +49,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: linux
-
-      - name: Install Apache2 on linux image
-        run: sudo apt-get install apache2
 
       - name: Make run.sh executable
         run: chmod +x ./run.sh
