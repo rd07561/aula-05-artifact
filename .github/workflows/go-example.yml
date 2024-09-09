@@ -17,19 +17,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Build for Linux
+      - name: Build for Linux image
         run: go build ${{ env.FILE_NAME }}.go
 
-      - name: Build for Windows
+      - name: Build for Windows image
         run: GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
 
-      - name: Upload artifact for Linux
+      - name: Upload artifact for Linux image
         uses: actions/upload-artifact@v1.0.0
         with:
           name: linux
           path: ./${{ env.FILE_NAME }}
 
-      - name: Upload artifact for Windows
+      - name: Upload artifact for Windows image
         uses: actions/upload-artifact@v1.0.0
         with:
           name: windows
@@ -47,8 +47,8 @@ jobs:
         with:
           name: linux
 
-      - name: List files in current directory
-        run: ls -la
+      - name: Install Apache2 on linux image
+        run: sudo apt-get install apache2
 
       - name: Make run.sh executable
         run: chmod +x ./run.sh
