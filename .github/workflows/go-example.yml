@@ -32,6 +32,9 @@ jobs:
       - name: Install Apache2 on linux image
         run: sudo apt-get install apache2
 
+      - name: Update linux image
+        run: sudo apt-get update
+
       - name: Upload artifact for Windows image
         uses: actions/upload-artifact@v1.0.0
         with:
